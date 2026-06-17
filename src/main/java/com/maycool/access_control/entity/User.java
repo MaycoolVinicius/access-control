@@ -15,9 +15,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
+    @ManyToOne
     private String rfidCode;
     private boolean status;
 
     private UserType userType;
+
 
 }

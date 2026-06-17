@@ -4,19 +4,22 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Turnstile {
+public class AccessLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    private String location;
-    private boolean status;
-
+    private LocalDateTime dateTime;
+    private boolean access;
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private Turnstile turnstile;
+    private AccessType accessType;
 }
