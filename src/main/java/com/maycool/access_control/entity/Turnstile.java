@@ -15,7 +15,6 @@ public class Turnstile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String location;
     private boolean status;
 
