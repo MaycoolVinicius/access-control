@@ -32,7 +32,7 @@ public class TurnstileService {
         return turnstileRepository.save(turnstileUpdate);
     }
 
-    public void replace(Long id) {
+    public void toggleStatus(Long id) {
         Turnstile turnstile = turnstileRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Catraca não encontrada"));
                 turnstile.setStatus(!turnstile.isStatus());

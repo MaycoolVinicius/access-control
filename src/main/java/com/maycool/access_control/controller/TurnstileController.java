@@ -16,8 +16,9 @@ public class TurnstileController {
     private final TurnstileService turnstileService;
 
     @GetMapping
-    public List<Turnstile> allList(){
-        return turnstileService.allList();
+    public ResponseEntity<List<Turnstile>> allList(){
+        List<Turnstile> allList = turnstileService.allList();
+        return ResponseEntity.ok(allList);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Turnstile> srcById(@PathVariable Long id){
@@ -37,8 +38,8 @@ public class TurnstileController {
             return ResponseEntity.ok(turnstileUpdate);
     }
     @PatchMapping("/{id}/status")
-    public ResponseEntity<Void> replace(@PathVariable Long id){
-        turnstileService.replace(id);
+    public ResponseEntity<Void> toggleStatus(@PathVariable Long id){
+        turnstileService.toggleStatus(id);
         return ResponseEntity.noContent().build();
     }
 

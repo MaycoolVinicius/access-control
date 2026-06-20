@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,7 +16,9 @@ public class UserController {
 
     private final UserService userService;
 
-    // GET /usuarios
+//    public ResponseEntity<List<User>> allList() — o método retorna uma resposta HTTP que contém uma lista de User dentro.
+//            List<User> allList = userService.allList() — chama o Service que vai no banco, busca todos os usuários e armazena na variável allList.
+//return ResponseEntity.ok(allList) — monta a resposta com status 200 OK e coloca a lista no corpo. O Spring converte a lista automaticamente pra JSON.
     @GetMapping
     public ResponseEntity<List<User>> allList() {
         List<User> allList = userService.allList();
@@ -62,8 +63,8 @@ public class UserController {
 //            userService.replace(id) — chama o Service passando só o id. O Service busca o usuário, inverte o status e salva.
 //            ResponseEntity.noContent().build() — retorna status 204 No Content. Significa "deu certo, mas não tenho nada pra te mostrar"
     @PatchMapping("/{id}/status")
-    public ResponseEntity<Void> replace(@PathVariable Long id) {
-        userService.replace(id);
+    public ResponseEntity<Void> toggleStatus(@PathVariable Long id) {
+        userService.toggleStatus(id);
         return ResponseEntity.noContent().build(); // 204 No Content
     }
 

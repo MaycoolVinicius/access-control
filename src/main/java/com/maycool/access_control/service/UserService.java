@@ -34,7 +34,7 @@ public class UserService {
     }
 
 
-    public void replace(Long id) {
+    public void toggleStatus(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
                 user.setStatus(!user.isStatus());
