@@ -19,8 +19,9 @@ public class UserController {
 
     // GET /usuarios
     @GetMapping
-    public List<User> allList() {
-        return userService.allList();
+    public ResponseEntity<List<User>> allList() {
+        List<User> allList = userService.allList();
+        return ResponseEntity.ok(allList);
     }
 
     // GET /usuarios/{id} mapeia as requisições GET para rota /user/{id}, @PathVariable Long id — captura o valor do {id} da URL e injeta como parâmetro do método. Se a URL for /user/5, o id vai ser 5.
