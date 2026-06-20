@@ -19,4 +19,5 @@ public class AccessLogService {
     public AccessLog save(AccessLog newLog) {
         return accessLogRepository.save(newLog);
     }
+
 }
