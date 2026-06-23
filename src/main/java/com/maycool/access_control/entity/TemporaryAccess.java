@@ -18,6 +18,7 @@ public class TemporaryAccess {
     private long id;
     private boolean active;
     private LocalDateTime createdAt;
+    private LocalDateTime expiresAt;
     @ManyToOne
     private User user;
     }
